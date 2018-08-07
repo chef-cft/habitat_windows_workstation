@@ -47,5 +47,14 @@ resource "aws_security_group_rule" "ingress_winrm_all" {
 #   source_security_group_id = "${aws_security_group.habworkshop.id}"
 # }
 
+resource "aws_security_group_rule" "windows_egress_allow_0-65535_all" {
+  type              = "egress"
+  from_port         = 0
+  to_port           = 0
+  protocol          = "-1"
+  cidr_blocks       = ["0.0.0.0/0"]
+  security_group_id = "${aws_security_group.habworkshop.id}"
+}
+
 
 
