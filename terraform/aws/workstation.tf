@@ -23,20 +23,20 @@ resource "aws_instance" "workstation" {
     X-TTL         = "${var.tag_ttl}"
   }
 
-  provisioner "local-exec" {
-    command = "sleep 60"
-  }
+  # provisioner "local-exec" {
+  #   command = "sleep 60"
+  # }
 
-  provisioner "remote-exec" {
-    connection = {
-      type     = "winrm"
-      password = "RL9@T40BTmXh"
-      agent    = "false"
-      insecure = true
-      https    = false
-    }
+  # provisioner "remote-exec" {
+  #   connection = {
+  #     type     = "winrm"
+  #     password = "RL9@T40BTmXh"
+  #     agent    = "false"
+  #     insecure = true
+  #     https    = false
+  #   }
 
-    inline = [
-    ]
-  }
+  #   inline = [
+  #   ]
+  # }
 }
