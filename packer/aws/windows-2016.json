@@ -1,0 +1,50 @@
+{
+  "variables": {
+    "aws_access_key": "{{env `AWS_ACCESS_KEY`}}",
+    "aws_secret_key": "{{env `AWS_SECRET_KEY`}}",
+    "winrm_username": "Administrator",
+    "region":         "us-west-2",
+    "customer_name":  "Test",
+    "dept":           "chef-training",
+    "instance_type":  "t2.large"
+  },
+  "builders": [
+    {
+      "type":          "amazon-ebs",
+      "access_key":    "{{ user `aws_access_key` }}",
+      "secret_key":    "{{ user `aws_secret_key` }}",
+      "region":        "{{ user `region` }}",
+      "instance_type": "{{ user `instance_type` }}",
+      "source_ami_filter": {
+        "filters": {
+          "virtualization-type": "hvm",
+          "name": "Windows_Server-2016-English-Full-Containers-*",
+          "root-device-type": "ebs"
+        },
+        "most_recent": true,
+        "owners": "amazon"
+      },
+      "ami_name": "windows_2016_habitat_workstation_{{timestamp}}",
+      "user_data_file": "../templates/windows_bootstrap.txt",
+      "communicator": "winrm",
+      "winrm_username": "{{ user `winrm_username` }}"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "powershell",
+      "inline": [
+        "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))",
+        "C:/ProgramData/chocolatey/choco install habitat -y",
+        "C:/ProgramData/chocolatey/choco install git -y",
+        "C:/ProgramData/chocolatey/choco install GoogleChrome -y",
+        "C:/ProgramData/chocolatey/choco install VisualStudioCode -y",
+        "docker pull habitat-docker-registry.bintray.io/win-studio",
+        "New-NetFirewallRule -DisplayName \"Habitat TCP\" -Direction Inbound -Action Allow -Protocol TCP -LocalPort 9631,9638",
+        "New-NetFirewallRule -DisplayName \"Habitat UDP\" -Direction Inbound -Action Allow -Protocol UDP -LocalPort 9638",
+        "C:\\ProgramData\\Amazon\\EC2-Windows\\Launch\\Scripts\\InitializeInstance.ps1 -Schedule",
+        "C:\\ProgramData\\Amazon\\EC2-Windows\\Launch\\Scripts\\SysprepInstance.ps1 -NoShutdown"
+      ]
+    }
+  ]
+}
