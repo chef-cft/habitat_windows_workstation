@@ -17,7 +17,6 @@ Once an instance is provisioned, Packer will perform the followin configurations
 - Run the `templates/windows_bootstrap.txt` that sets up WinRM and create a local `hab` user with a password of `ch3fh@b1!` then adds that user to the `Administrators` group
 - Installs Software
  - Chocolatey
- - Habitat
  - Git 
  - Google Chrome
  - Visual Studio Code
@@ -26,6 +25,7 @@ Once an instance is provisioned, Packer will perform the followin configurations
 - Initializes the instance
 - SysPreps the instance
 
+The image does not install Habitat intentionally because installing it is part of the workshop
 
 ### Running a packer build
 Should you need to update the ami, cd to `packer/aws` then run `packer build windows-2016.json`
