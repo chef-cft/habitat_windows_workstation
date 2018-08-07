@@ -33,3 +33,8 @@ Should you need to update the ami, cd to `packer/aws` then run `packer build win
 NOTE: this AMI is very large and takes a long time to finish copying. You will likely need to set environment variables for `AWS_MAX_ATTEMPTS=60` and `AWS_POLL_DELAY_SECONDS=60` to allow the AMI copy to finish. With this packer will check every minute for one hour
 
 ## Terraform
+The terraform will create a VPC, subnet, security groups, and then launch `n` number of workstations. The output will give you the public ips of the instances to distribute to students.
+
+`cd terraform/aws` 
+create a `terraform.tfvars`
+`terraform apply`
