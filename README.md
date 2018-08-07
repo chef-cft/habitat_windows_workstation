@@ -26,9 +26,10 @@ Once an instance is provisioned, Packer will perform the followin configurations
 - Initializes the instance
 - SysPreps the instance
 
+
 ### Running a packer build
 Should you need to update the ami, cd to `packer/aws` then run `packer build windows-2016.json`
 
-Terraform has been configured to pull the latest ami published.
+NOTE: this AMI is very large and takes a long time to finish copying. You will likely need to set environment variables for `AWS_MAX_ATTEMPTS=60` and `AWS_POLL_DELAY_SECONDS=60` to allow the AMI copy to finish. With this packer will check every minute for one hour
 
 ## Terraform
