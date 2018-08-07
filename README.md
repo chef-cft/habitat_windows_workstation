@@ -16,10 +16,10 @@ Once an instance is provisioned, Packer will perform the followin configurations
 
 - Run the `templates/windows_bootstrap.txt` that sets up WinRM and create a local `hab` user with a password of `ch3fh@b1!` then adds that user to the `Administrators` group
 - Installs Software
- - Chocolatey
- - Git 
- - Google Chrome
- - Visual Studio Code
+  - Chocolatey
+  - Git 
+  - Google Chrome
+  - Visual Studio Code
 - Pulls the Windows Habitat studio from Docker hub
 - Opens Windows Firewall rules for Habitat
 - Initializes the instance
