@@ -15,13 +15,17 @@ variable "tag_customer" {}
 
 variable "tag_project" {}
 
-variable "tag_name" {}
+variable "tag_name" {
+  default = "hab_win_ws"
+}
 
 variable "tag_dept" {}
 
 variable "tag_contact" {}
 
-variable "tag_application" {}
+variable "tag_application" {
+  default = "hab_win_ws"
+}
 
 variable "tag_ttl" {}
 
