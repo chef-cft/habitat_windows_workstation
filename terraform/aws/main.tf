@@ -27,7 +27,7 @@ data "aws_ami" "windows_workstation" {
 }
 
 ////////////////////////////////
-// VPC 
+// VPC
 
 resource "aws_vpc" "habworkshop-vpc" {
   cidr_block           = "10.0.0.0/16"
@@ -35,7 +35,7 @@ resource "aws_vpc" "habworkshop-vpc" {
   enable_dns_hostnames = "true"
 
   tags {
-    Name          = "${var.tag_name}-vpc"
+    Name          = "${var.tag_contact}-${var.tag_name}-vpc"
     X-Dept        = "${var.tag_dept}"
     X-Customer    = "${var.tag_customer}"
     X-Project     = "${var.tag_project}"
@@ -49,7 +49,7 @@ resource "aws_internet_gateway" "habworkshop-gateway" {
   vpc_id = "${aws_vpc.habworkshop-vpc.id}"
 
   tags {
-    Name = "habworkshop-gateway"
+    Name = "${var.tag_contact}-${var.tag_name}-gateway"
   }
 }
 
@@ -65,6 +65,6 @@ resource "aws_subnet" "habworkshop-subnet" {
   map_public_ip_on_launch = true
 
   tags {
-    Name = "habworkshop-subnet"
+    Name = "${var.tag_contact}-${var.tag_name}-subnet"
   }
 }
