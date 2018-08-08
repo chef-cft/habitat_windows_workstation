@@ -16,7 +16,7 @@ variable "tag_customer" {}
 variable "tag_project" {}
 
 variable "tag_name" {
-  default = "hab_win_ws"
+  default = "hab-win-ws"
 }
 
 variable "tag_dept" {}
@@ -24,7 +24,7 @@ variable "tag_dept" {}
 variable "tag_contact" {}
 
 variable "tag_application" {
-  default = "hab_win_ws"
+  default = "hab-win-ws"
 }
 
 variable "tag_ttl" {}

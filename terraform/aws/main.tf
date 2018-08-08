@@ -49,7 +49,7 @@ resource "aws_internet_gateway" "habworkshop-gateway" {
   vpc_id = "${aws_vpc.habworkshop-vpc.id}"
 
   tags {
-    Name = "habworkshop-gateway"
+    Name = "${var.tag_contact}-${var.tag_name}-gateway"
   }
 }
 
@@ -65,6 +65,6 @@ resource "aws_subnet" "habworkshop-subnet" {
   map_public_ip_on_launch = true
 
   tags {
-    Name = "habworkshop-subnet"
+    Name = "${var.tag_contact}-${var.tag_name}-subnet"
   }
 }
