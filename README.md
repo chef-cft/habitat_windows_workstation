@@ -1,5 +1,7 @@
 # Windows Habitat Workstation
-This repo contains both a packer template to build a Windows workstation for Habitat Development, and terraform to launch the instances based off of that template for Habitat workshops.
+This repo contains both a packer template to build a Windows workstation for Habitat Development, and terraform to launch the instances based off of that template for Windows Habitat workshops. There is also a repo for building Linux workstations and that can be found here:
+
+(https://github.com/chef-cft/habitat_workstation/)[https://github.com/chef-cft/habitat_workstation/]
 
 ## Prereqs
 In order to run this you will need the following:
