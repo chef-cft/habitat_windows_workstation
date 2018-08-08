@@ -4,7 +4,7 @@ resource "aws_security_group" "habworkshop" {
   vpc_id      = "${aws_vpc.habworkshop-vpc.id}"
 
   tags {
-    Name          = "${var.tag_customer}-${var.tag_project}_${random_id.instance_id.hex}_${var.tag_application}_security_group"
+    Name          = "${var.tag_customer}-${var.tag_project}-${random_id.instance_id.hex}-${var.tag_application}-security_group"
     X-Dept        = "${var.tag_dept}"
     X-Customer    = "${var.tag_customer}"
     X-Project     = "${var.tag_project}"
