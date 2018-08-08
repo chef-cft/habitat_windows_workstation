@@ -14,7 +14,7 @@ resource "aws_instance" "workstation" {
   }
 
   tags {
-    Name          = "habworkshop_${count.index}"
+    Name          = "${var.tag_contact}-${var.tag_customer}-habworkshop-${count.index}"
     X-Dept        = "${var.tag_dept}"
     X-Customer    = "${var.tag_customer}"
     X-Project     = "${var.tag_project}"
