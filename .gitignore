@@ -24,3 +24,4 @@ inspec.lock
 
 results/
 user.toml
+local_development/.vagrant/*
