@@ -1,0 +1,50 @@
+{
+  "variables": {
+    "client_id": "{{env `CLIENT_ID`}}",
+    "client_secret": "{{env `CLIENT_SECRET`}}",
+    "subscription_id": "{{env `SUBSCRIPTION_ID`}}",
+    "tenant_id": "{{env `TENANT_ID`}}",
+    "region": "{{env `AZURE_REGION`}}"
+  },
+  "builders": [{
+    "type": "azure-arm",
+
+    "client_id": "{{user `client_id`}}",
+    "client_secret": "{{user `client_secret`}}",
+    "subscription_id": "{{user `subscription_id`}}",
+    "tenant_id": "{{user `tenant_id`}}",
+
+    "managed_image_resource_group_name": "habitat_windows_workstations",
+    "managed_image_name": "habitat_windows_workstation_{{timestamp}}",
+
+    "os_type": "Windows",
+    "image_publisher": "MicrosoftWindowsServer",
+    "image_offer": "WindowsServer",
+    "image_sku": "2016-Datacenter-with-Containers",
+
+    "communicator": "winrm",
+    "winrm_use_ssl": "true",
+    "winrm_insecure": "true",
+    "winrm_timeout": "3m",
+    "winrm_username": "packer",
+
+    "location": "{{user `region`}}",
+    "vm_size": "Standard_DS2_v2"
+  }],
+  "provisioners": [{
+    "type": "powershell",
+    "inline": [
+      "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))",
+      "C:\\ProgramData\\chocolatey\\choco install habitat -y",
+      "C:/ProgramData/chocolatey/choco install GoogleChrome -y",
+      "C:/ProgramData/chocolatey/choco install VisualStudioCode -y",
+      "C:/ProgramData/chocolatey/choco install git -y",
+      "docker pull habitat-docker-registry.bintray.io/win-studio",
+      "New-NetFirewallRule -DisplayName 'Habitat TCP' -Direction Inbound -Action Allow -Protocol TCP -LocalPort 9631,9638",
+      "New-NetFirewallRule -DisplayName 'Habitat UDP' -Direction Inbound -Action Allow -Protocol UDP -LocalPort 9638",
+      "C:\\ProgramData\\chocolatey\\bin\\hab pkg install core/windows-service",
+      "C:\\ProgramData\\chocolatey\\bin\\hab pkg exec core/windows-service install",
+      "C:\\ProgramData\\chocolatey\\bin\\hab pkg install core/hab-sup"
+    ]
+  }]
+}
