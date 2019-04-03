@@ -4,7 +4,7 @@
     "aws_secret_key": "{{env `AWS_SECRET_KEY`}}",
     "winrm_username": "Administrator",
     "winrm_password": "RL9@T40BTmXh",
-    "region":         "us-west-2",
+    "region":         "us-east-1",
     "customer_name":  "Test",
     "dept":           "chef-training",
     "instance_type":  "t2.large"

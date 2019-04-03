@@ -10,6 +10,8 @@ terraform.tfvars
 creds.txt
 *.tar.gz
 .kitchen
+terraform/aws/variables.tf
+packer/aws/windows-2016.json
 
 .DS_Store
 !example.tfvars
