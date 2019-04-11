@@ -1,0 +1,23 @@
+azure_region  = "westus2"
+
+azure_sub_id = "xxxxxxx-xxxx-xxxx-xxxxxxxxxx"
+
+azure_tenant_id = "xxxxxxx-xxxx-xxxx-xxxxxxxxxx"
+
+azure_client_id = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+
+azure_client_secret = "xxxxxxxxxxxxxxxxxxxx"
+
+azure_public_key_path = "/path/to/ssh/key.pub"
+
+azure_private_key_path = "/path/to/ssh/key.pem"
+
+tag_customer = "cust"
+
+tag_project = "proj"
+
+tag_dept = "sales"
+
+tag_contact = "me@somewhere.com"
+
+automate_hostname = "jmery-a2"
