@@ -9,6 +9,10 @@ variable "aws_region" {
   default = "us-west-2"
 }
 
+variable "aws_instance_type" {
+  default = "t3.large"
+}
+
 ////////////////////////////////
 // Tags
 
