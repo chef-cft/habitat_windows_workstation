@@ -1,7 +1,7 @@
 resource "aws_instance" "workstation" {
   count                       = "${var.count}"
   ami                         = "${data.aws_ami.windows_workstation.id}"
-  instance_type               = "t2.large"
+  instance_type               = "${var.aws_instance_type}"
   key_name                    = "${var.aws_key_pair_name}"
   subnet_id                   = "${aws_subnet.habworkshop-subnet.id}"
   vpc_security_group_ids      = ["${aws_security_group.habworkshop.id}"]
