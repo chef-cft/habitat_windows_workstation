@@ -7,7 +7,7 @@
     "region":         "us-west-2",
     "customer_name":  "Test",
     "dept":           "chef-training",
-    "instance_type":  "t2.large"
+    "instance_type":  "t3.large"
   },
   "builders": [
     {

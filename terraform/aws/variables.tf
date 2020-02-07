@@ -2,10 +2,15 @@
 ////////////////////////////////
 // AWS Connection
 
-variable "aws_profile" {}
-
+variable "aws_profile" {
+  default = "default"
+}
 variable "aws_region" {
   default = "us-west-2"
+}
+
+variable "aws_instance_type" {
+  default = "t3.large"
 }
 
 ////////////////////////////////
