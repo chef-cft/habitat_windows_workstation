@@ -37,6 +37,7 @@ NOTE: this AMI is very large and takes a long time to finish copying. You will l
 ## Terraform
 The terraform will create a VPC, subnet, security groups, and then launch `n` number of workstations. The output will give you the public ips of the instances to distribute to students.
 
-`cd terraform/aws` 
-create a `terraform.tfvars`
+## Usage
+`cd terraform/aws`    
+create a `terraform.tfvars` you can use `example.tfvars` as an example   
 `terraform apply`
