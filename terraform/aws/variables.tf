@@ -48,7 +48,7 @@ variable "aws_key_pair_name" {
 ////////////////////////////////
 // Instance Configs
 
-variable "count" {
+variable "workstations" {
   default = "1"
 }
 

@@ -1,5 +1,5 @@
 resource "aws_instance" "workstation" {
-  count                       = var.count
+  count                       = var.workstations
   ami                         = data.aws_ami.windows_workstation.id
   instance_type               = var.aws_instance_type
   key_name                    = var.aws_key_pair_name
