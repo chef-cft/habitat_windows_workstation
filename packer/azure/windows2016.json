@@ -34,6 +34,7 @@
   "provisioners": [{
     "type": "powershell",
     "inline": [
+      "[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12",
       "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))",
       "C:\\ProgramData\\chocolatey\\choco install habitat -y",
       "C:/ProgramData/chocolatey/choco install git -y",
