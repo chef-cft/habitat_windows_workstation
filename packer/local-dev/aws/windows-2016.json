@@ -25,7 +25,7 @@
         "most_recent": true,
         "owners": "amazon"
       },
-      "ami_name": "windows_2016_habitat_workstation_{{timestamp}}",
+      "ami_name": "windows_2016_habitat_dev_workstation_{{timestamp}}",
       "user_data_file": "../templates/windows_bootstrap.txt",
       "communicator": "winrm",
       "winrm_username": "{{ user `winrm_username` }}",
@@ -43,6 +43,7 @@
         "C:/ProgramData/chocolatey/choco install chef-workstation -y",
         "C:/ProgramData/chocolatey/choco install poshgit -y",
         "C:/ProgramData/chocolatey/choco install cmder -y",
+        "C:/ProgramData/chocolatey/choco install habitat -y",
         "docker pull habitat-docker-registry.bintray.io/win-studio",
         "New-NetFirewallRule -DisplayName \"Habitat TCP\" -Direction Inbound -Action Allow -Protocol TCP -LocalPort 9631,9638",
         "New-NetFirewallRule -DisplayName \"Habitat UDP\" -Direction Inbound -Action Allow -Protocol UDP -LocalPort 9638",
