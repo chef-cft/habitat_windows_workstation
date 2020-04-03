@@ -16,7 +16,7 @@ data "aws_ami" "windows_workstation" {
 
   filter {
     name   = "name"
-    values = ["windows_2016_habitat_workstation_*"]
+    values = ["windows_2016_habitat_dev_workstation_*"]
   }
 
   filter {
