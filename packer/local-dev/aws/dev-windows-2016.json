@@ -7,7 +7,7 @@
     "region":         "us-west-2",
     "customer_name":  "Test",
     "dept":           "chef-training",
-    "instance_type":  "t3.large"
+    "instance_type":  "m5.xlarge"
   },
   "builders": [
     {
@@ -25,6 +25,14 @@
         "most_recent": true,
         "owners": "amazon"
       },
+      "launch_block_device_mappings": [
+        {
+          "device_name": "/dev/sda1",
+          "volume_size": 100,
+          "volume_type": "gp2",
+          "delete_on_termination": true
+        }
+      ],
       "ami_name": "windows_2016_habitat_dev_workstation_{{timestamp}}",
       "user_data_file": "../templates/windows_bootstrap.txt",
       "communicator": "winrm",
@@ -36,17 +44,17 @@
     {
       "type": "powershell",
       "inline": [
+        "[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12",
         "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))",
+        "C:/ProgramData/chocolatey/choco install habitat -y",
+        "hab license accept",
+        "docker pull habitat/win-studio-x86_64-windows:ltsc2016-1.5.86",
         "C:/ProgramData/chocolatey/choco install git -y",
         "C:/ProgramData/chocolatey/choco install GoogleChrome -y",
         "C:/ProgramData/chocolatey/choco install VisualStudioCode -y",
         "C:/ProgramData/chocolatey/choco install chef-workstation -y",
         "C:/ProgramData/chocolatey/choco install poshgit -y",
         "C:/ProgramData/chocolatey/choco install cmder -y",
-        "C:/ProgramData/chocolatey/choco install habitat -y",
-        "hab license accept",
-        "docker pull habitat-docker-registry.bintray.io/win-studio",
-        "docker pull habitat/win-studio-x86_64-windows",
         "New-NetFirewallRule -DisplayName \"Habitat TCP\" -Direction Inbound -Action Allow -Protocol TCP -LocalPort 9631,9638",
         "New-NetFirewallRule -DisplayName \"Habitat UDP\" -Direction Inbound -Action Allow -Protocol UDP -LocalPort 9638",
         "C:\\ProgramData\\Amazon\\EC2-Windows\\Launch\\Scripts\\InitializeInstance.ps1 -Schedule",

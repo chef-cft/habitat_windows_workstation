@@ -36,6 +36,7 @@ resource "aws_instance" "workstation" {
   #   }
 
   #   inline = [
+  #     "[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12"
   #   ]
   # }
 }

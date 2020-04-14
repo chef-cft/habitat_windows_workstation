@@ -26,3 +26,5 @@ results/
 user.toml
 local_development/.vagrant/*
 .env
+
+packer/notes.txt
