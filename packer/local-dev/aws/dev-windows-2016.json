@@ -56,7 +56,7 @@
         "echo $t",
         "echo \"docker pull habitat/win-studio-x86_64-windows:ltsc2016-$t\"",
         "docker pull habitat/win-studio-x86_64-windows:ltsc2016-$t",
-        "hab pkg install core/hab-studio/1.5.86",
+        "hab pkg install core/hab-studio/$t",
         "C:/ProgramData/chocolatey/choco install git -y",
         "C:/ProgramData/chocolatey/choco install GoogleChrome -y",
         "C:/ProgramData/chocolatey/choco install VisualStudioCode -y",
