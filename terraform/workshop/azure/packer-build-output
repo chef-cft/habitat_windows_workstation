@@ -1,0 +1,7 @@
+OSType: Windows
+StorageAccountLocation: southcentralus
+OSDiskUri: https://habwinws.blob.core.windows.net/system/Microsoft.Compute/Images/images/hab_win_ws_1555645452-osDisk.0ddaef46-3f54-4f25-b733-7feb2a5c074c.vhd
+OSDiskUriReadOnlySas: https://habwinws.blob.core.windows.net/system/Microsoft.Compute/Images/images/hab_win_ws_1555645452-osDisk.0ddaef46-3f54-4f25-b733-7feb2a5c074c.vhd?se=2019-05-19T04%3A51%3A22Z&sig=doITwkXGNwTOJAiFJKPiea%2BN3%2BKZbrcxa%2BdH1DldYyY%3D&sp=r&sr=b&sv=2016-05-31
+TemplateUri: https://habwinws.blob.core.windows.net/system/Microsoft.Compute/Images/images/hab_win_ws_1555645452-vmTemplate.0ddaef46-3f54-4f25-b733-7feb2a5c074c.json
+TemplateUriReadOnlySas: https://habwinws.blob.core.windows.net/system/Microsoft.Compute/Images/images/hab_win_ws_1555645452-vmTemplate.0ddaef46-3f54-4f25-b733-7feb2a5c074c.json?se=2019-05-19T04%3A51%3A22Z&sig=GTwZttb3tsQSqjbUQm8OuAO3DcVumItXhxGOmXQtAHs%3D&sp=r&sr=b&sv=2016-05-31
+

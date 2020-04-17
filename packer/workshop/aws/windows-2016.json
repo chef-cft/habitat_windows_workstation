@@ -7,7 +7,7 @@
     "region":         "us-west-2",
     "customer_name":  "Test",
     "dept":           "chef-training",
-    "instance_type":  "t3.large"
+    "instance_type":  "m5.large"
   },
   "builders": [
     {
@@ -36,6 +36,7 @@
     {
       "type": "powershell",
       "inline": [
+        "[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12",
         "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))",
         "C:/ProgramData/chocolatey/choco install git -y",
         "C:/ProgramData/chocolatey/choco install GoogleChrome -y",
