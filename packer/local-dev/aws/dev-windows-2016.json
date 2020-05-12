@@ -3,7 +3,7 @@
     "aws_access_key": "{{env `AWS_ACCESS_KEY`}}",
     "aws_secret_key": "{{env `AWS_SECRET_KEY`}}",
     "winrm_username": "Administrator",
-    "winrm_password": "RL9@T40BTmXh",
+    "winrm_password": "Sup3rS3cr3tP@ssw0rd",
     "region":         "us-west-2",
     "customer_name":  "Test",
     "dept":           "chef-training",
