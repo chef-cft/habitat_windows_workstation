@@ -6,6 +6,7 @@ resource "aws_instance" "workstation" {
   subnet_id                   = aws_subnet.habworkshop-subnet.id
   vpc_security_group_ids      = [aws_security_group.habworkshop.id]
   associate_public_ip_address = true
+  get_password_data = "true"
 
   root_block_device {
     delete_on_termination = true
@@ -27,18 +28,23 @@ resource "aws_instance" "workstation" {
      command = "sleep 60"
   }
 
+
   provisioner "remote-exec" {
     connection {
     type     = "winrm"
-    user     = "hab"
-    password = "ch3fh@b1!"
+    user     = "Administrator"
+    password = "${rsadecrypt(aws_instance.workstation[count.index].password_data, file("${var.aws_key_pair_file}"))}"
     host     = coalesce(self.public_ip, self.private_ip)
     insecure = true
-    agent     = "false"
-    https     = false
+    agent    = "false"
+    https    = false
     }
     inline = [
       "cmd.exe /c net user Administrator ${var.admin_password}",
+      # Create instructor user and add them to the admin group
+      "cmd.exe /c net user instructor ${var.instructor_password} /add /LOGONPASSWORDCHG:NO",
+      "cmd.exe /c net localgroup Administrators /add instructor",
+      "cmd.exe /c wmic useraccount where \"name='instructor'\" set PasswordExpires=FALSE"
     ]
   }
 
