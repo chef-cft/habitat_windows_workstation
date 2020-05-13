@@ -22,14 +22,31 @@ resource "aws_instance" "workstation" {
     X-Contact     = var.tag_contact
     X-TTL         = var.tag_ttl
   }
-  # provisioner "local-exec" {
-  #   command = "sleep 60"
-  # }
+
+  provisioner "local-exec" {
+     command = "sleep 60"
+  }
+
+  provisioner "remote-exec" {
+    connection {
+    type     = "winrm"
+    user     = "hab"
+    password = "ch3fh@b1!"
+    host     = coalesce(self.public_ip, self.private_ip)
+    insecure = true
+    agent     = "false"
+    https     = false
+    }
+    inline = [
+      "cmd.exe /c net user Administrator ${var.admin_password}",
+    ]
+  }
+
 
   # provisioner "remote-exec" {
   #   connection = {
   #     type     = "winrm"
-  #     password = "RL9@T40BTmXh"
+  #     password = ""
   #     agent    = "false"
   #     insecure = true
   #     https    = false

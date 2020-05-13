@@ -52,3 +52,6 @@ variable "workstations" {
   default = "1"
 }
 
+variable "admin_password" {
+  default = ""
+}
